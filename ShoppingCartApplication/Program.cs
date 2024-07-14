@@ -10,7 +10,7 @@ namespace ShoppingCartApplication
             MainMenu();
         }
 
-        private static void MainMenu()
+        private static void MainMenu() 
         {
             while (true)
             {
