@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static ShoppingCartApplication.Product;
 
 namespace ShoppingCartApplication
@@ -10,6 +13,7 @@ namespace ShoppingCartApplication
     public class ProductGenerator
 
     {
+        static List<Dictionary<string, int>> RandomItems = new List<Dictionary<string, int>>();
         static Product product1 = new Product();
         public static void ChooseItem(string[] Name, string[]Price)
         {
@@ -39,7 +43,23 @@ namespace ShoppingCartApplication
                 }
             }
         }
-
+        public static void GenerateRandomProduct()
+        {
+            Random rnd = new Random();
+            int random = rnd.Next(15);
+            string[] names;
+            string[] price;
+            names = new string[] { "Apple", "Banana", "Bread", "Milk", "Cheese",
+                                             "T.Shirt", "Jeans", "Jacket", "Sweater", "Dress",
+                                              "Laptop", "Smartphone", "Headphones", "Monitor", "Camera"  };
+            price = new string[] { "2$", "3$", "7$", "6$", "1$",
+                                               "20$", "30$", "70$", "60$", "100$",
+                                               "200$", "300$", "700$", "600$", "1000$" };
+            price[random] = price[random].Replace("$", "");
+            string newName = names[random];
+            int newPrice = (int)Convert.ChangeType(price[random], typeof(int));
+            ShoppingCart.AddRandomItems(names[random], newPrice);
+        }
         public static (string[], string[]) GenerateProduct(ProductCategory product)
         {
             string[] names;

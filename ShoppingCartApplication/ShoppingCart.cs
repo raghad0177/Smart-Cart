@@ -11,7 +11,6 @@ namespace ShoppingCartApplication
     public class ShoppingCart
     {
         static List<Dictionary<string, int>> Items = new List<Dictionary<string, int>>();
-
         public static bool AddItems(Dictionary<string, int> item)
         {
             int initialCount = Items.Count;
@@ -25,7 +24,22 @@ namespace ShoppingCartApplication
                 return false;
             }
         }
-
+        public static bool AddRandomItems(string name, int item)
+        {
+            int initialCount = Items.Count;
+            Dictionary<string, int> choosed = new Dictionary<string, int> { };
+            choosed[name] = item;
+            Items.Add(choosed);
+            if (Items.Count > initialCount)
+            {
+                Console.WriteLine($"Item {name} Randomly Added");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static bool RemoveItems()
         {
             int initialCount = Items.Count;
@@ -48,7 +62,6 @@ namespace ShoppingCartApplication
                 return false;
             }
         }
-
         public static void View() {
             int count = 1;
             Console.WriteLine("Items:");
@@ -60,9 +73,7 @@ namespace ShoppingCartApplication
                 }
             }
             TotalCost();
-
         }
-
         public static int TotalCost() { 
             int total = 0;
             foreach (var item in Items)

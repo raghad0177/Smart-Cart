@@ -12,7 +12,6 @@ namespace ShoppingCartApplication
         public ProductCategory Category { get; set; }
         public string[] Name { get; set; }
         public string[] Price { get; set; }
-
         public static void PrintCategory()
         {
             int count = 1;

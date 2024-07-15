@@ -19,5 +19,4 @@ namespace ShoppingCartApplication
             return (Name, Price);
         }
     }
-   
 }
