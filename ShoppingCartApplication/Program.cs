@@ -17,7 +17,8 @@ namespace ShoppingCartApplication
                 Console.WriteLine("1- Pick Your Shops Categories");
                 Console.WriteLine("2- Cart Items");
                 Console.WriteLine("3- CheckOut");
-                Console.WriteLine("4- Exit");
+                Console.WriteLine("4- Add Random Items");
+                Console.WriteLine("5- Exit");
 
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
@@ -34,6 +35,9 @@ namespace ShoppingCartApplication
                             Environment.Exit(0);
                             break;
                         case 4:
+                            ProductGenerator.GenerateRandomProduct();
+                            break;
+                        case 5:
                             Environment.Exit(0);
                             break;
                         default:
